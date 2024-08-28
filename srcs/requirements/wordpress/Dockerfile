@@ -19,11 +19,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 # Créer le répertoire où WordPress sera installé
 RUN mkdir -p /var/www/html && mkdir -p /run/php
 RUN chmod -R 755 /var/www/html
-# Télécharger WordPress
-# RUN wget https://wordpress.org/latest.tar.gz && \
-#     tar -xzf latest.tar.gz && \
-#     rm latest.tar.gz && \
-#     mv wordpress/* /var/www/html
 # Copier le script d'initialisation
 COPY tools/script.sh /tmp/script.sh
 COPY ./conf/www.conf /etc/php/8.1/fpm/pool.d/www.conf
@@ -32,4 +27,3 @@ RUN chmod +x /tmp/script.sh
 EXPOSE 9000
 # Exécuter le script d'initialisation
 CMD ["/tmp/script.sh"]
-# CMD ["sleep", "infinity"]

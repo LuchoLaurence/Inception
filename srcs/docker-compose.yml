@@ -7,7 +7,7 @@ services:
     volumes:
       - wordpress:/var/www/html
     networks:
-      - webnet
+      - inception
     depends_on:
       - wordpress
     env_file:
@@ -20,7 +20,7 @@ services:
     volumes:
       - wordpress:/var/www/html
     networks:
-      - webnet
+      - inception
     env_file:
       - .env
     restart: on-failure
@@ -31,13 +31,13 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     networks:
-      - webnet
+      - inception
     env_file:
       - .env
     restart: on-failure
 
 networks:
-  webnet:
+  inception:
     driver: bridge
 
 volumes:

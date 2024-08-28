@@ -13,8 +13,10 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/n
 # Copy the configuration file from the current directory and paste it inside the container
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
+# Give the permissions to the directory
 RUN chmod 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html
+# Open port 443 for HTTPS traffic
 EXPOSE 443
 
 CMD [ "nginx", "-g", "daemon off;" ]
